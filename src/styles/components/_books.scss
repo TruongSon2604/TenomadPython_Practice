@@ -1,0 +1,215 @@
+.books-container {
+  padding: $spacing-lg;
+
+  .books-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      color: $dark-color;
+      margin: 0;
+    }
+
+    .add-book-btn {
+      padding: $spacing-sm $spacing-md;
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      font-weight: $font-weight-bold;
+      cursor: pointer;
+      transition: background-color $transition-speed;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-lg;
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .book-card {
+    border: $border-width solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    transition: transform $transition-speed, box-shadow $transition-speed;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-image {
+      height: 200px;
+      background-color: lighten($border-color, 10%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .book-info {
+      padding: $spacing-md;
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: $spacing-xs;
+        color: $dark-color;
+        font-size: $font-size-large;
+      }
+
+      .book-author {
+        color: lighten($text-color, 20%);
+        font-size: $font-size-small;
+        margin-bottom: $spacing-sm;
+      }
+
+      .book-description {
+        color: $text-color;
+        font-size: $font-size-small;
+        margin-bottom: $spacing-md;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+
+    .book-actions {
+      display: flex;
+      justify-content: space-between;
+      padding: $spacing-sm $spacing-md;
+      border-top: $border-width solid $border-color;
+
+      button {
+        border: none;
+        background: none;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius;
+        cursor: pointer;
+        font-size: $font-size-small;
+        font-weight: $font-weight-bold;
+        transition: background-color $transition-speed, color $transition-speed;
+
+        &.edit-btn {
+          color: $warning-color;
+
+          &:hover {
+            background-color: rgba($warning-color, 0.1);
+          }
+        }
+
+        &.delete-btn {
+          color: $danger-color;
+
+          &:hover {
+            background-color: rgba($danger-color, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Book Form Styles
+.book-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  h2 {
+    color: $dark-color;
+    margin-bottom: $spacing-lg;
+  }
+
+  .form-group {
+    margin-bottom: $spacing-md;
+
+    label {
+      display: block;
+      margin-bottom: $spacing-xs;
+      font-weight: $font-weight-bold;
+      color: $text-color;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: $border-width solid $border-color;
+      border-radius: $border-radius;
+      font-size: $font-size-base;
+      transition: border-color $transition-speed;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .error-message {
+      color: $danger-color;
+      font-size: $font-size-small;
+      margin-top: $spacing-xs;
+    }
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $spacing-lg;
+
+    button {
+      padding: $spacing-sm $spacing-lg;
+      border-radius: $border-radius;
+      font-weight: $font-weight-bold;
+      cursor: pointer;
+      transition: background-color $transition-speed;
+
+      &.submit-btn {
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+
+        &:disabled {
+          background-color: lighten($secondary-color, 20%);
+          cursor: not-allowed;
+        }
+      }
+
+      &.cancel-btn {
+        background-color: transparent;
+        color: $text-color;
+        border: $border-width solid $border-color;
+
+        &:hover {
+          background-color: $light-color;
+        }
+      }
+    }
+  }
+}
